@@ -1,7 +1,4 @@
-/* -*- C++ -*- */
-
-/****************************************************************************
-** Copyright (c) quickfixengine.org  All rights reserved.
+opyright (c) quickfixengine.org  All rights reserved.
 **
 ** This file is part of the QuickFIX FIX Engine
 **
@@ -32,14 +29,16 @@ class SessionID
 public:
   SessionID() {}
 
-  SessionID( const BeginString& beginString,
-             const SenderCompID& senderCompID,
-             const TargetCompID& targetCompID,
-             const std::string& sessionQualifier = "" )
-  : m_beginString( beginString ),
-    m_senderCompID( senderCompID ),
-    m_targetCompID( targetCompID ),
-    m_sessionQualifier( sessionQualifier ) {}
+  engine.org and appearing in the file
+** LICENSE included in the packaging of this file.
+**
+** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+**
+** See http://www.quickfixengine.org/LICENSE for licensing informatialifier( sessionQualifier ) 
+  {
+        toString(m_frozenString);
+  }
 
   SessionID( const std::string& beginString,
              const std::string& senderCompID,
@@ -48,7 +47,10 @@ public:
   : m_beginString( BeginString(beginString) ),
     m_senderCompID( SenderCompID(senderCompID) ),
     m_targetCompID( TargetCompID(targetCompID) ),
-    m_sessionQualifier( sessionQualifier ) {}
+    m_sessionQualifier( sessionQualifier )
+  {
+        toString(m_frozenString);
+  }
 
   const BeginString& getBeginString() const
     { return m_beginString; }
@@ -62,8 +64,13 @@ public:
   /// Get a string representation of the SessionID
   std::string toString() const
   {
-      std::string str;
-      return toString( str );
+    return m_frozenString;
+  }
+    
+  // Return a reference for a high-performance scenario
+  const std::string& toStringFrozen() const
+  {
+    return m_frozenString;
   }
 
   /// Build from string representation of SessionID
@@ -91,6 +98,7 @@ public:
       m_targetCompID = str.substr(second+2, third - second - 2);
       m_sessionQualifier = str.substr(third+1);
     }
+    toString(m_frozenString);
   }
 
   /// Get a string representation without making a copy
@@ -121,37 +129,20 @@ private:
   SenderCompID m_senderCompID;
   TargetCompID m_targetCompID;
   std::string m_sessionQualifier;
+  std::string m_frozenString;
 };
 /*! @} */
 
 inline bool operator<( const SessionID& lhs, const SessionID& rhs )
 {
-  if ( lhs.m_beginString < rhs.m_beginString )
-    return true;
-  else if ( rhs.m_beginString < lhs.m_beginString )
-    return false;
-  else if ( lhs.m_senderCompID < rhs.m_senderCompID )
-    return true;
-  else if ( rhs.m_senderCompID < lhs.m_senderCompID )
-    return false;
-  else if ( lhs.m_targetCompID < rhs.m_targetCompID )
-    return true;
-  else if ( rhs.m_targetCompID < lhs.m_targetCompID )
-    return false;
-  else if ( lhs.m_sessionQualifier < rhs.m_sessionQualifier )
-    return true;
-  else if ( rhs.m_sessionQualifier < lhs.m_sessionQualifier )
-    return false;
-  else
-    return false;
+  return lhs.toStringFrozen() < rhs.toStringFrozen();
 }
+
 inline bool operator==( const SessionID& lhs, const SessionID& rhs )
 {
-  return ( ( lhs.m_beginString == rhs.m_beginString ) &&
-           ( lhs.m_senderCompID == rhs.m_senderCompID ) &&
-           ( lhs.m_targetCompID == rhs.m_targetCompID ) &&
-           ( lhs.m_sessionQualifier == rhs.m_sessionQualifier ));
+  return lhs.toStringFrozen() == rhs.toStringFrozen();
 }
+
 inline bool operator!=( const SessionID& lhs, const SessionID& rhs )
 {
   return !( lhs == rhs );
@@ -160,8 +151,7 @@ inline bool operator!=( const SessionID& lhs, const SessionID& rhs )
 inline std::ostream& operator<<
 ( std::ostream& stream, const SessionID& sessionID )
 {
-  std::string str;
-  stream << sessionID.toString( str );
+  stream << sessionID.toStringFrozen();
   return stream;
 }
 
@@ -176,3 +166,4 @@ inline std::istream& operator>>
 
 }
 #endif //FIX_SESSIONID_H
+
