@@ -30,7 +30,7 @@ namespace FIX
 class SessionID
 {
 public:
-  SessionID() {}
+  SessionID()
   {
         toString(m_frozenString);
   }
