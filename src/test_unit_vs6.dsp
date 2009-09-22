@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MD /W3 /GR /GX /O2 /I ".." /I "c++" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /FD /I /src/socket" " /c
+# ADD CPP /nologo /MD /W3 /GR /GX /O2 /I ".." /I "c++" /I "c++\test" /I "..\UnitTest++\src" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /FD /I /src/socket" " /c
 # SUBTRACT CPP /YX /Yc /Yu
 # ADD BASE RSC /l 0x409 /d "NDEBUG"
 # ADD RSC /l 0x409 /d "NDEBUG"
@@ -68,7 +68,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GR /GX /Zi /Od /I ".." /I "c++" /D "_CONSOLE" /D "WIN32" /D "_DEBUG" /D "_MBCS" /FD /I /src/socket" /GZ " /c
+# ADD CPP /nologo /MDd /W3 /Gm /GR /GX /Zi /Od /I ".." /I "c++" /I "c++\test" /I "..\UnitTest++\src" /D "_CONSOLE" /D "WIN32" /D "_DEBUG" /D "_MBCS" /FD /I /src/socket" /GZ " /c
 # SUBTRACT CPP /YX /Yc /Yu
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
 # ADD RSC /l 0x409 /d "_DEBUG"
@@ -88,10 +88,6 @@ LINK32=link.exe
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
-# Begin Source File
-
-SOURCE=".\C++\test\AcceptorTestCase.cpp"
-# End Source File
 # Begin Source File
 
 SOURCE=".\C++\test\DataDictionaryTestCase.cpp"
@@ -142,10 +138,6 @@ SOURCE=".\C++\test\MessagesTestCase.cpp"
 # End Source File
 # Begin Source File
 
-SOURCE=".\C++\test\MessageStoreTestCase.cpp"
-# End Source File
-# Begin Source File
-
 SOURCE=".\C++\test\MySQLStoreTestCase.cpp"
 # End Source File
 # Begin Source File
@@ -187,10 +179,6 @@ SOURCE=".\C++\test\SocketConnectorTestCase.cpp"
 # Begin Source File
 
 SOURCE=".\C++\test\SocketServerTestCase.cpp"
-# End Source File
-# Begin Source File
-
-SOURCE=".\C++\test\SocketUtilitiesTestCase.cpp"
 # End Source File
 # Begin Source File
 
