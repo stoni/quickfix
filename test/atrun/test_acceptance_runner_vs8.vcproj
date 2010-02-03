@@ -76,7 +76,7 @@
 				OutputFile="$(OutDir)\atrun.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(SolutionDir)\lib\debug"
+				AdditionalLibraryDirectories="$(SolutionDir)\lib"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=".\Debug/atrun.pdb"
 				SubSystem="1"
@@ -168,7 +168,7 @@
 				OutputFile="$(OutDir)\atrun.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(SolutionDir)\lib\release"
+				AdditionalLibraryDirectories="$(SolutionDir)\lib"
 				ProgramDatabaseFile=".\Release/atrun.pdb"
 				SubSystem="1"
 			/>
